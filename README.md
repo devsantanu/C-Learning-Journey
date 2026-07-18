@@ -6,6 +6,7 @@ This repository contains my C programming projects.
 
 1. Student Grade System
 2. Profit Loss Calculator
+3. Number guessing game
 
 ## Language
 

@@ -5,75 +5,67 @@
     - Finds highest and lowest marks
     - Assgin grade
     - Displays pass/fail result
-    
+
     Author   :Santanu Kumar Sahoo
     Language :C
 */
 
-#include<stdio.h>
+#include <stdio.h>
 
 int main()
 {
   char student_name[30];
-  
-  int mark[5], total=0, i, fail=0, highest_mark, lowest_mark;
-  
+ char subject[5][20]={"Math","Physics","chemistry","Odia","English"};
+  int mark[5], total = 0, i, fail = 0, highest_mark, lowest_mark;
+
   float average, percentage;
-  
-  printf("===========================================\n");
-  
-  printf("IMPORTANT NOTICE:\n");
-  printf("Do not use spaces in the student name.\n");
-  
-  printf("============================================\n");
-  
+
   printf("Enter Student Name: ");
-  scanf("%s",student_name);
-  
+  fgets(student_name,30,stdin);
   printf("\n");
-  
+
   printf("Enter marks of 5 subjects:\n");
-  
-    for(i=0;i<5;i++)
+
+  for (i = 0; i < 5; i++)
+  {
+    printf("Enter marks for %s: ", subject[i]);
+    scanf("%d", &mark[i]);
+
+    if (mark[i] < 0 || mark[i] > 100)
     {
-       printf("subject %d: ",i+1);
-       scanf("%d",&mark[i]);
-       
-        if(mark[i]<0||mark[i]>100)
-         {
-            printf("Invalid Marks Entered \n");
-            return 0;
-         }
-        if(i==0)
-         {
-            highest_mark = mark[i];
-            lowest_mark = mark[i];
-         }
-        if(mark[i]>highest_mark)
-         {
-            highest_mark = mark[i];
-         }
-        if(mark[i] < lowest_mark)
-         {
-            lowest_mark = mark[i];
-         }
-        if(mark[i] < 33)
-         {
-            printf("Subject %d :Fail\n",i+1);
-            fail=1;
-         }
-        else
-         {
-           printf("Subject %d :Pass\n",i+1); 
-         }
-           total = total + mark[i];
-           printf("\n");
+      printf("Invalid Marks Entered \n");
+      return 1;
+      
     }
-    
-  average = total/5.0;
-  percentage = (total/500.0)*100;
-  
-  
+    if (i == 0)
+    {
+      highest_mark = mark[i];
+      lowest_mark = mark[i];
+    }
+    if (mark[i] > highest_mark)
+    {
+      highest_mark = mark[i];
+    }
+    if (mark[i] < lowest_mark)
+    {
+      lowest_mark = mark[i];
+    }
+    if (mark[i] < 33)
+    {
+      printf("Subject %d :Fail\n", i + 1);
+      fail = 1;
+    }
+    else
+    {
+      printf("Subject %d :Pass\n", i + 1);
+    }
+    total = total + mark[i];
+    printf("\n");
+  }
+
+  average = total / 5.0;
+  percentage = (total / 500.0) * 100;
+
   printf("\n=====================================\n");
   printf("       STUDENT REPORT CARD\n");
   printf("=====================================\n");
@@ -86,23 +78,23 @@ int main()
 
   printf("-------------------------------------\n");
 
-  if(fail == 1)
+  if (fail == 1)
   {
     printf("Grade          : F\n");
   }
-  else if(percentage >= 90)
+  else if (percentage >= 90)
   {
     printf("Grade          : A\n");
   }
-  else if(percentage >= 75)
+  else if (percentage >= 75)
   {
     printf("Grade          : B\n");
   }
-  else if(percentage >= 60)
+  else if (percentage >= 60)
   {
     printf("Grade          : C\n");
   }
-  else if(percentage >= 40)
+  else if (percentage >= 40)
   {
     printf("Grade          : D\n");
   }
@@ -111,7 +103,7 @@ int main()
     printf("Grade          : F\n");
   }
 
-  if(fail == 1)
+  if (fail == 1)
   {
     printf("Overall Result : FAIL\n");
   }
